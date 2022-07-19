@@ -23,3 +23,9 @@ File or Folder | Purpose
 ## Learn More
 
 Learn more at https://cap.cloud.sap/docs/get-started/.
+
+1 - Build docker -> docker build -t <name_app>
+2 - Push Docker -> docker push <username_docker>/<name_app>
+	Caso não funcionar, será necessário marcar uma tag.
+	-> docker tag <name_app> <username_docker>/<name_app>
+	-> Rode o Push Docker novamente.
