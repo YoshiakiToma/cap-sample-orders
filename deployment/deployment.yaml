@@ -53,14 +53,17 @@ kind: APIRule
 metadata:
   name: orders
 spec:
-  gateway: kyma-gateway.kyma-system.svc.cluster.local
   service:
+    host: orders
     name: orders
     port: 8080
-    host: orders
+  gateway: kyma-gateway.kyma-system.svc.cluster.local
   rules:
     - path: /.*
-      methods: ["GET"]
+      methods: ["GET", "PUT", "POST", "HEAD", "PATCH", "DELETE" ]
       accessStrategies:
-        - handler: noop
-          config: {}
+        - handler: jwt
+          config:
+            jwks_urls:
+            - https://argqctwzn.accounts.ondemand.com/oauth2/certs
+      mutators: []
